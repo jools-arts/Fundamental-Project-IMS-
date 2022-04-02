@@ -33,6 +33,10 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo
 
+# Agile and Project Planning
+
+For access to the relevant Jira board regarding this project, please access the following URL: (https://joolsarts.atlassian.net/jira/software/projects/FP/boards/2)
+
 ## Running the tests
 
 Explain how to run the automated tests for this system. Break down into which tests and what they do

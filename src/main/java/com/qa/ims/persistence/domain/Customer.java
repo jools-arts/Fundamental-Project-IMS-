@@ -2,35 +2,37 @@ package com.qa.ims.persistence.domain;
 
 public class Customer {
 
-	private Long id;
-	private String firstName;
+	private Long customer_id;
+	private String first_name;
 	private String surname;
+	private String email_address;
+	private Long mobile_number;
+	private String home_address;
+	private String date_of_birth;
 
-	public Customer(String firstName, String surname) {
-		this.setFirstName(firstName);
-		this.setSurname(surname);
+	public Customer(Long CustomerId, String FirstName, String Surname, String EmailAddress, Long MobileNumber, String HomeAddress, String DateOfBirth) {
+		this.setFirstName(FirstName);
+		this.setSurname(Surname);
+		this.setEmailAddress(EmailAddress);
+		this.setMobileNumber(MobileNumber);
+		this.setHomeAddress(HomeAddress);
+		this.setDateOfBirth(DateOfBirth);
 	}
 
-	public Customer(Long id, String firstName, String surname) {
-		this.setId(id);
-		this.setFirstName(firstName);
-		this.setSurname(surname);
+	public Long getCustomerId() {
+		return customer_id;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public void setCustomerId(Long customer_id) {
+		this.customer_id = customer_id;
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return first_name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String first_name) {
+		this.first_name = first_name;
 	}
 
 	public String getSurname() {
@@ -41,17 +43,44 @@ public class Customer {
 		this.surname = surname;
 	}
 
-	@Override
-	public String toString() {
-		return "id:" + id + " first name:" + firstName + " surname:" + surname;
+	public String getEmailAddress() {
+		return email_address;
+	}
+
+	public void setEmailAddress(String email_address) {
+		this.email_address = email_address;
+	}
+
+	public Long getMobileNumber() {
+		return mobile_number;
+	}
+
+	public void setMobileNumber(Long mobileNumber) {
+		this.mobile_number = mobileNumber;
+	}
+
+	public String getHomeAddress() {
+		return home_address;
+	}
+
+	public void setHomeAddress(String home_address) {
+		this.home_address = home_address;
+	}
+
+	public String getDateOfBirth() {
+		return date_of_birth;
+	}
+
+	public void setDateOfBirth(String date_of_birth) {
+		this.date_of_birth = date_of_birth;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((first_name == null) ? 0 : first_name.hashCode());
+		result = prime * result + ((customer_id == null) ? 0 : customer_id.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		return result;
 	}
@@ -70,10 +99,10 @@ public class Customer {
 				return false;
 		} else if (!getFirstName().equals(other.getFirstName()))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (customer_id == null) {
+			if (other.customer_id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!customer_id.equals(other.customer_id))
 			return false;
 		if (surname == null) {
 			if (other.surname != null)
