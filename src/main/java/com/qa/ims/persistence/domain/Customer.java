@@ -6,11 +6,12 @@ public class Customer {
 	private String first_name;
 	private String surname;
 	private String email_address;
-	private Long mobile_number;
+	private String mobile_number;
 	private String home_address;
 	private String date_of_birth;
 
-	public Customer(Long CustomerId, String FirstName, String Surname, String EmailAddress, Long MobileNumber, String HomeAddress, String DateOfBirth) {
+	public Customer(Long CustomerId, String FirstName, String Surname, String EmailAddress, String MobileNumber, String HomeAddress, String DateOfBirth) {
+		this.setCustomerId(CustomerId);
 		this.setFirstName(FirstName);
 		this.setSurname(Surname);
 		this.setEmailAddress(EmailAddress);
@@ -51,11 +52,11 @@ public class Customer {
 		this.email_address = email_address;
 	}
 
-	public Long getMobileNumber() {
+	public String getMobileNumber() {
 		return mobile_number;
 	}
 
-	public void setMobileNumber(Long mobileNumber) {
+	public void setMobileNumber(String mobileNumber) {
 		this.mobile_number = mobileNumber;
 	}
 
@@ -73,6 +74,13 @@ public class Customer {
 
 	public void setDateOfBirth(String date_of_birth) {
 		this.date_of_birth = date_of_birth;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [customer_id=" + customer_id + ", first_name=" + first_name + ", surname=" + surname
+				+ ", email_address=" + email_address + ", mobile_number=" + mobile_number + ", home_address="
+				+ home_address + ", date_of_birth=" + date_of_birth + "]";
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class CustomerDAO implements Dao<Customer> {
 		String firstName = resultSet.getString("first_name");
 		String surname = resultSet.getString("surname");
 		String emailAddress = resultSet.getString("email_address");
-		Long mobileNumber = resultSet.getLong("mobile_number");
+		String mobileNumber = resultSet.getString("mobile_number");
 		String homeAddress = resultSet.getString("home_address");
 		String dateOfBirth = resultSet.getString("date_of_birth");
 		return new Customer(customerId, firstName, surname, emailAddress, mobileNumber, homeAddress, dateOfBirth);
@@ -79,7 +79,7 @@ public class CustomerDAO implements Dao<Customer> {
 			statement.setString(1, customer.getFirstName());
 			statement.setString(2, customer.getSurname());
 			statement.setString(3, customer.getEmailAddress());
-			statement.setLong(4, customer.getMobileNumber());
+			statement.setString(4, customer.getMobileNumber());
 			statement.setString(5, customer.getHomeAddress());
 			statement.setString(6, customer.getDateOfBirth());
 			statement.executeUpdate();
@@ -140,7 +140,7 @@ public class CustomerDAO implements Dao<Customer> {
 	@Override
 	public int delete(long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("DELETE FROM customers WHERE id = ?");) {
+				PreparedStatement statement = connection.prepareStatement("DELETE FROM customer WHERE customer_id = ?");) {
 			statement.setLong(1, id);
 			return statement.executeUpdate();
 		} catch (Exception e) {

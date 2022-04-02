@@ -22,7 +22,7 @@ public class ItemDAO implements Dao<Item> {
 	public Item modelFromResultSet(ResultSet resultSet) throws SQLException {
 		Long itemId = resultSet.getLong("item_id");
 		String name = resultSet.getString("name");
-		String description = resultSet.getString("decription");
+		String description = resultSet.getString("description");
 		String colour = resultSet.getString("colour");
 		String brand = resultSet.getString("brand");
 		Long price = resultSet.getLong("price");
@@ -55,7 +55,7 @@ public class ItemDAO implements Dao<Item> {
 	public Item readLatest() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM customer BY id DESC LIMIT 1");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM item ORDER BY item_id DESC LIMIT 1");) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -126,7 +126,7 @@ public class ItemDAO implements Dao<Item> {
 	@Override
 	public int delete(long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("DELETE FROM customers WHERE id = ?");) {
+				PreparedStatement statement = connection.prepareStatement("DELETE FROM item WHERE item_id = ?");) {
 			statement.setLong(1, id);
 			return statement.executeUpdate();
 		} catch (Exception e) {

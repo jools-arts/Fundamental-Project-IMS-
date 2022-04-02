@@ -67,6 +67,13 @@ public class Item {
 	public void setPrice(Long price) {
 		this.price = price;
 	}
+	
+
+	@Override
+	public String toString() {
+		return "Item [item_id=" + item_id + ", name=" + name + ", description=" + description + ", colour=" + colour
+				+ ", brand=" + brand + ", price=" + price + "]";
+	}
 
 	@Override
 	public int hashCode() {

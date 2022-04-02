@@ -1,3 +1,5 @@
+USE ims;
+
 INSERT INTO `ims`.`customer` (`first_name`, `surname`, `email_address`, `mobile_number`, `home_address`, `date_of_birth`) VALUES ('jordan', 'harrison', 'jordan.harrison@mail.com', '07384891369', '23 Sparrow Close, Manchester', '1997-06-29');
 INSERT INTO `ims`.`customer` (`first_name`, `surname`, `email_address`, `mobile_number`, `home_address`, `date_of_birth`) VALUES ('steve', 'park', 'steve.park@mail.com', '07953605429', '64 Brown Way, Brighton', '1997-06-29');
 INSERT INTO `ims`.`customer` (`first_name`, `surname`, `email_address`, `mobile_number`, `home_address`, `date_of_birth`) VALUES ('marcus', 'knight', 'marcus.knight@mail.com', '07789671335', '31 Park Avenue, Leeds', '1997-06-29');
