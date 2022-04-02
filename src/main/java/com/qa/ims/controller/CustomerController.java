@@ -47,7 +47,15 @@ public class CustomerController implements CrudController<Customer> {
 		String firstName = utils.getString();
 		LOGGER.info("Please enter a surname");
 		String surname = utils.getString();
-		Customer customer = customerDAO.create(new Customer(null, firstName, surname, surname, null, surname, surname));
+		LOGGER.info("Please enter an email address");
+		String emailAddress = utils.getString();
+		LOGGER.info("Please enter a moblile number");
+		String mobileNumber = utils.getString();
+		LOGGER.info("Please enter a home address");
+		String homeAddress = utils.getString();
+		LOGGER.info("Please enter a date of birth");
+		String dateOfBirth = utils.getString();
+		Customer customer = customerDAO.create(new Customer(null, firstName, surname, emailAddress, mobileNumber, homeAddress, dateOfBirth));
 		LOGGER.info("Customer created");
 		return customer;
 	}
@@ -57,13 +65,19 @@ public class CustomerController implements CrudController<Customer> {
 	 */
 	@Override
 	public Customer update() {
-		LOGGER.info("Please enter the id of the customer you would like to update");
-		Long id = utils.getLong();
-		LOGGER.info("Please enter a first name");
+		LOGGER.info("Please enter the first name of the customer you would like to update");
 		String firstName = utils.getString();
-		LOGGER.info("Please enter a surname");
+		LOGGER.info("Please enter the surname of the customer you would like to update");
 		String surname = utils.getString();
-		Customer customer = customerDAO.update(new Customer(id, firstName, surname, surname, id, surname, surname));
+		LOGGER.info("Please enter the email address of the customer you would like to update");
+		String emailAddress = utils.getString();
+		LOGGER.info("Please enter the mobile number of the customer you would like to update");
+		String mobileNumber = utils.getString();
+		LOGGER.info("Please enter the home address of the customer you would like to update");
+		String homeAddress = utils.getString();
+		LOGGER.info("Please enter the date of birth of the customer you would like to update");
+		String dateOfBirth = utils.getString();
+		Customer customer = customerDAO.update(new Customer(null, firstName, surname, emailAddress, mobileNumber, homeAddress, dateOfBirth));
 		LOGGER.info("Customer Updated");
 		return customer;
 	}

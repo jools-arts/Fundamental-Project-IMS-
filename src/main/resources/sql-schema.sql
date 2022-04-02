@@ -1,22 +1,24 @@
-drop schema ims;
+DROP SCHEMA ims;
 
 CREATE SCHEMA IF NOT EXISTS `ims`;
 
 USE `ims` ;
 
 CREATE TABLE IF NOT EXISTS `ims`.`customer` (
-    `customer_id` INT(10) NOT NULL AUTO_INCREMENT,
+    `customer_id` INT NOT NULL AUTO_INCREMENT,
     `first_name` VARCHAR(40) DEFAULT NULL,
     `surname` VARCHAR(40) DEFAULT NULL,
     `email_address` VARCHAR(40) DEFAULT NULL,
-    `mobile_number` INT(20) DEFAULT NULL,
+    `mobile_number` VARCHAR(20) DEFAULT NULL,
     `home_address` VARCHAR(100) DEFAULT NULL,
     `date_of_birth` DATE DEFAULT NULL,
     PRIMARY KEY(`customer_id`)
 );
 
+SELECT * FROM customer;
+
 CREATE TABLE IF NOT EXISTS `ims`.`item` (
-	`item_id` INT(10) NOT NULL AUTO_INCREMENT,
+	`item_id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(40) DEFAULT NULL,
     `description` VARCHAR(200) DEFAULT NULL,
     `colour` VARCHAR(30) DEFAULT NULL,
@@ -26,17 +28,17 @@ CREATE TABLE IF NOT EXISTS `ims`.`item` (
 );
 
 CREATE TABLE IF NOT EXISTS `ims`.`order` (
-	`order_id` INT(10) NOT NULL AUTO_INCREMENT,
+	`order_id` INT NOT NULL AUTO_INCREMENT,
     `order_number` INT(30) NOT NULL,
+    `customer_id` INT,
     PRIMARY KEY(`order_id`),
-    FOREIGN KEY(`customer_id`) REFERENCES `customer`(`customer_id`),
-    FOREIGN KEY(`item_id`) REFERENCES `item`(`item_id`)
+    FOREIGN KEY(`customer_id`) REFERENCES `customer`(`customer_id`)
 );
 
 CREATE TABLE IF NOT EXISTS `ims`.`order_items` (
-	`order_id` INT(10),
-    `item_id` INT(10),
-	`num_of_items` INT(30) NOT NULL,
+	`order_id` INT,
+    `item_id` INT,
+	`num_of_items` INT(5) NOT NULL,
     PRIMARY KEY (`order_id`, `item_id`),
     FOREIGN KEY(`order_id`) REFERENCES `order`(`order_id`),
     FOREIGN KEY(`item_id`) REFERENCES `item`(`item_id`)
