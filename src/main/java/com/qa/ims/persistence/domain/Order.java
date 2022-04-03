@@ -4,28 +4,28 @@ import java.util.Objects;
 
 public class Order {
 	
-	private Long order_number;
+	private Long orderNumber;
 	
 	public Order(Long OrderNumber) {
 		this.setOrderNumber(OrderNumber);
 	}
 
-	public Long getOrder_number() {
-		return order_number;
+	public Long getOrderNumber() {
+		return orderNumber;
 	}
 
-	public void setOrder_number(Long order_number) {
-		this.order_number = order_number;
+	public void setOrderNumber(Long orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [order_number=" + order_number + "]";
+		return "Order [order_number=" + orderNumber + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(order_number);
+		return Objects.hash(orderNumber);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class Order {
 		if (getClass() != obj.getClass())
 			return false;
 		Order other = (Order) obj;
-		return Objects.equals(order_number, other.order_number);
+		return Objects.equals(orderNumber, other.orderNumber);
 	}
 	
 	

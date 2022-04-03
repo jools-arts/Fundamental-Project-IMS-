@@ -108,7 +108,7 @@ public class ItemDAO implements Dao<Item> {
 	public Item update(Item item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("UPDATE item SET name = ?, surname = ? WHERE id = ?");) {
+						.prepareStatement("UPDATE item SET name = ?, description = ?, colour = ?, brand = ?, price = ? WHERE id = ?");) {
 			statement.setString(1, item.getName());
 			statement.setString(2, item.getDescription());
 			statement.setString(3, item.getColour());
@@ -134,6 +134,14 @@ public class ItemDAO implements Dao<Item> {
 			LOGGER.error(e.getMessage());
 		}
 		return 0;
+	}
+	
+	public void confirmItem(Item item) {
+		item.confirmName();
+		item.confirmDescription();
+		item.confirmColour();
+		item.confirmBrand();
+		item.confirmPrice();
 	}
 
 }

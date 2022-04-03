@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Item {
 	
-	private Long item_id;
+	private Long itemId;
 	private String name;
 	private String description;
 	private String colour;
@@ -12,7 +12,7 @@ public class Item {
 	private float price;
 	
 	public Item(Long id, String name, String description, String colour, String brand, Long price) {
-		this.setId(id);
+		this.setId(itemId);
 		this.setName(name);
 		this.setDescription(description);
 		this.setColour(colour);
@@ -21,11 +21,11 @@ public class Item {
 	}
 
 	public Long getId() {
-		return item_id;
+		return itemId;
 	}
 
 	public void setId(Long id) {
-		this.item_id = id;
+		this.itemId = id;
 	}
 
 	public String getName() {
@@ -68,16 +68,41 @@ public class Item {
 		this.price = price;
 	}
 	
+	public void confirmName() {
+		if(this.name.isBlank());
+		throw new RuntimeException("invalid entry for name, please enter a value for name");
+	}
+	
+	public void confirmDescription() {
+		if(this.description.isBlank());
+		throw new RuntimeException("invalid entry for description, please enter a value for description");
+	}
+	
+	public void confirmColour() {
+		if(this.description.isBlank());
+		throw new RuntimeException("invalid entry for colour, please enter a value for colour");
+	}
+	
+	public void confirmBrand() {
+		if(this.brand.isBlank());
+		throw new RuntimeException("invalid entry for brand, please enter a value for brand");
+	}
+	
+	public void confirmPrice() {
+		if(this.price < 0);
+		throw new RuntimeException("invalid entry for price, please enter a value for price");
+	}
+	
 
 	@Override
 	public String toString() {
-		return "Item [item_id=" + item_id + ", name=" + name + ", description=" + description + ", colour=" + colour
+		return "Item [item_id=" + itemId + ", name=" + name + ", description=" + description + ", colour=" + colour
 				+ ", brand=" + brand + ", price=" + price + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(brand, colour, description, item_id, name, price);
+		return Objects.hash(brand, colour, description, itemId, name, price);
 	}
 
 	@Override
@@ -90,7 +115,7 @@ public class Item {
 			return false;
 		Item other = (Item) obj;
 		return Objects.equals(brand, other.brand) && Objects.equals(colour, other.colour)
-				&& Objects.equals(description, other.description) && Objects.equals(item_id, other.item_id)
+				&& Objects.equals(description, other.description) && Objects.equals(itemId, other.itemId)
 				&& Objects.equals(name, other.name) && Objects.equals(price, other.price);
 	}
 	
