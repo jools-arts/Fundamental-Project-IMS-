@@ -2,13 +2,13 @@ package com.qa.ims.persistence.domain;
 
 public class Customer {
 
-	private Long customer_id;
-	private String first_name;
+	private Long customerId;
+	private String firstName;
 	private String surname;
-	private String email_address;
-	private String mobile_number;
-	private String home_address;
-	private String date_of_birth;
+	private String emailAddress;
+	private String mobileNumber;
+	private String homeAddress;
+	private String dateOfBirth;
 
 	public Customer(Long CustomerId, String FirstName, String Surname, String EmailAddress, String MobileNumber, String HomeAddress, String DateOfBirth) {
 		this.setCustomerId(CustomerId);
@@ -21,19 +21,19 @@ public class Customer {
 	}
 
 	public Long getCustomerId() {
-		return customer_id;
+		return customerId;
 	}
 
 	public void setCustomerId(Long customer_id) {
-		this.customer_id = customer_id;
+		this.customerId = customer_id;
 	}
 
 	public String getFirstName() {
-		return first_name;
+		return firstName;
 	}
 
 	public void setFirstName(String first_name) {
-		this.first_name = first_name;
+		this.firstName = first_name;
 	}
 
 	public String getSurname() {
@@ -45,50 +45,80 @@ public class Customer {
 	}
 
 	public String getEmailAddress() {
-		return email_address;
+		return emailAddress;
 	}
 
 	public void setEmailAddress(String email_address) {
-		this.email_address = email_address;
+		this.emailAddress = email_address;
 	}
 
 	public String getMobileNumber() {
-		return mobile_number;
+		return mobileNumber;
 	}
 
 	public void setMobileNumber(String mobileNumber) {
-		this.mobile_number = mobileNumber;
+		this.mobileNumber = mobileNumber;
 	}
 
 	public String getHomeAddress() {
-		return home_address;
+		return homeAddress;
 	}
 
 	public void setHomeAddress(String home_address) {
-		this.home_address = home_address;
+		this.homeAddress = home_address;
 	}
 
 	public String getDateOfBirth() {
-		return date_of_birth;
+		return dateOfBirth;
 	}
 
 	public void setDateOfBirth(String date_of_birth) {
-		this.date_of_birth = date_of_birth;
+		this.dateOfBirth = date_of_birth;
+	}
+	
+	public void confirmFirstName() {
+		if(this.firstName.isBlank())
+			throw new RuntimeException("invalid entry for first name, please enter a value for first name");
+	}
+	
+	public void confirmSurname() {
+		if(this.surname.isBlank())
+			throw new RuntimeException("invalid entry for surname, please enter a value for surname");
+	}
+	
+	public void confirmEmailAddress() {
+		if(this.emailAddress.isBlank())
+			throw new RuntimeException("invalid entry for email address, please enter a value for email address");
+	}
+	
+	public void confirmMobileNumber() {
+		if(this.mobileNumber.isBlank())
+			throw new RuntimeException("invalid entry for mobile number, please enter a value for mobile number");
+	}
+	
+	public void confirmHomeAddress() {
+		if(this.homeAddress.isBlank())
+			throw new RuntimeException("invalid entry for home address, please enter a value for home address");
+	}
+	
+	public void confirmDateOfBirth() {
+		if(this.dateOfBirth.isBlank())
+			throw new RuntimeException("invalid entry for date of birth, please enter a value for date of birth");
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [customer_id=" + customer_id + ", first_name=" + first_name + ", surname=" + surname
-				+ ", email_address=" + email_address + ", mobile_number=" + mobile_number + ", home_address="
-				+ home_address + ", date_of_birth=" + date_of_birth + "]";
+		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", surname=" + surname
+				+ ", emailAddress=" + emailAddress + ", mobileNumber=" + mobileNumber + ", homeAddress="
+				+ homeAddress + ", dateOfBirth=" + dateOfBirth + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((first_name == null) ? 0 : first_name.hashCode());
-		result = prime * result + ((customer_id == null) ? 0 : customer_id.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		return result;
 	}
@@ -107,10 +137,10 @@ public class Customer {
 				return false;
 		} else if (!getFirstName().equals(other.getFirstName()))
 			return false;
-		if (customer_id == null) {
-			if (other.customer_id != null)
+		if (customerId == null) {
+			if (other.customerId != null)
 				return false;
-		} else if (!customer_id.equals(other.customer_id))
+		} else if (!customerId.equals(other.customerId))
 			return false;
 		if (surname == null) {
 			if (other.surname != null)

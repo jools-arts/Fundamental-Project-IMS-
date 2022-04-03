@@ -92,11 +92,11 @@ public class CustomerDAO implements Dao<Customer> {
 	}
 
 	@Override
-	public Customer read(Long id) {
+	public Customer read(Long customerId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
 						.prepareStatement("SELECT * FROM customer WHERE customer_id = ?");) {
-			statement.setLong(1, id);
+			statement.setLong(1, customerId);
 			try (ResultSet resultSet = statement.executeQuery();) {
 				resultSet.next();
 				return modelFromResultSet(resultSet);
@@ -119,10 +119,14 @@ public class CustomerDAO implements Dao<Customer> {
 	public Customer update(Customer customer) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("UPDATE customer SET first_name = ?, surname = ? WHERE customer_id = ?");) {
-			statement.setString(1, customer.getFirstName());
-			statement.setString(2, customer.getSurname());
-			statement.setLong(3, customer.getCustomerId());
+						.prepareStatement("UPDATE customer SET first_name = ?, surname = ?, email_address = ?, mobile_number =  ?, home_address = ?, date_of_birth = ? WHERE customer_id = ?");) {
+			statement.setLong(1, customer.getCustomerId());
+			statement.setString(2, customer.getFirstName());
+			statement.setString(3, customer.getSurname());
+			statement.setString(4, customer.getEmailAddress());
+			statement.setString(5, customer.getMobileNumber());
+			statement.setString(6, customer.getHomeAddress());
+			statement.setString(7, customer.getDateOfBirth());
 			statement.executeUpdate();
 			return read(customer.getCustomerId());
 		} catch (Exception e) {
@@ -138,16 +142,26 @@ public class CustomerDAO implements Dao<Customer> {
 	 * @param id - id of the customer
 	 */
 	@Override
-	public int delete(long id) {
+	public int delete(long customerId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("DELETE FROM customer WHERE customer_id = ?");) {
-			statement.setLong(1, id);
+				PreparedStatement statement = connection
+						.prepareStatement("DELETE FROM customer WHERE customer_id = ?");) {
+			statement.setLong(1, customerId);
 			return statement.executeUpdate();
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
 		}
 		return 0;
+	}
+	
+	public void confirmCustomer(Customer customer) {
+		customer.confirmFirstName();
+		customer.confirmSurname();
+		customer.confirmEmailAddress();
+		customer.confirmMobileNumber();
+		customer.confirmHomeAddress();
+		customer.confirmDateOfBirth();
 	}
 
 }
